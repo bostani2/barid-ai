@@ -86,7 +86,7 @@ export default function BaridChat() {
         className="absolute left-1/2 -translate-x-1/2 top-4 text-[24px] leading-none whitespace-nowrap"
         data-node-id="1:65"
       >
-        سامانه هوشمند توماسیون اداری
+        سامانه هوشمند اتوماسیون اداری
       </h1>
 
       <div
@@ -94,9 +94,19 @@ export default function BaridChat() {
         className="absolute left-1/2 -translate-x-1/2 top-[60px] bottom-[120px] w-[90%] max-w-[849px] overflow-y-auto"
       >
         <div className="space-y-4">
-          {messages.map((m) => (
+          {messages.map((m, i) => (
             <div key={m.id} className="whitespace-pre-wrap leading-relaxed" dir="rtl">
-              <span className="mr-2 text-[#AFAFAF]">{m.role === "user" ? "شما:" : "دستیار:"}</span>
+              <span className="mr-2 text-[#AFAFAF]">
+                {m.role === "user" ? "شما:" : "دستیار:"}
+                {m.role === "assistant" && isSending && i === messages.length - 1 && (
+                  <span className="inline-flex items-center mr-1 align-middle" aria-live="polite">
+                    <span
+                      className="ml-2 inline-block h-3 w-3 rounded-full border-2 border-[#AFAFAF] border-t-transparent animate-spin"
+                      aria-label="در حال فکر کردن"
+                    />
+                  </span>
+                )}
+              </span>
               <span>{m.content}</span>
             </div>
           ))}
@@ -121,7 +131,7 @@ export default function BaridChat() {
       </div>
 
       <p
-        className="absolute left-1/2 -translate-x-1/2 bottom-1 text-[16px] whitespace-nowrap"
+        className="absolute left-1/2 -translate-x-1/2 bottom-1 text-[12px] whitespace-nowrap"
         data-node-id="1:72"
       >
         شرکت ملی مناطق نفت خیز جنوب
