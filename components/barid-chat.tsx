@@ -107,7 +107,7 @@ export default function BaridChat() {
                   </span>
                 )}
               </span>
-              <span>{m.content}</span>
+              <span className={m.role === "assistant" ? "text-[#22c55e]" : ""}>{m.content}</span>
             </div>
           ))}
         </div>
