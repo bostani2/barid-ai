@@ -102,8 +102,11 @@ export async function POST(req: NextRequest) {
 
     return new Response(stream, {
       headers: {
-        "Content-Type": "text/plain; charset=utf-8",
-        "Cache-Control": "no-cache",
+        "Content-Type": "text/event-stream; charset=utf-8",
+        "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0, no-transform",
+        "Pragma": "no-cache",
+        "Connection": "keep-alive",
+        "Transfer-Encoding": "chunked",
         "X-Accel-Buffering": "no",
       },
     });
